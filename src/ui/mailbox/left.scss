@@ -1,0 +1,189 @@
+@use "@catppuccin/palette/scss/macchiato";
+@import "src/ui/common/global";
+
+#messagetoolbar {
+  position: fixed;
+  left: 15rem;
+
+  z-index: 99999;
+}
+
+#mailview-left {
+  position: fixed;
+  left: 0;
+  width: 15rem;
+  background: macchiato.$base;
+  z-index: 999;
+  border: none;
+  border-right: macchiato.$surface0 2px solid;
+
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  #new-message {
+    @include flex-center;
+    top: 6rem;
+    position: relative;
+
+    width: 90%;
+    font-size: 1.2rem;
+
+    $padding: 0.8rem;
+    padding-top: $padding;
+    padding-bottom: $padding;
+
+    color: white;
+    background: macchiato.$red;
+    border-radius: 0.5rem;
+    text-decoration: none;
+  }
+
+  #mailboxcontainer {
+    @include flex-center;
+
+    background: none;
+    border: transparent;
+    border-radius: 0;
+    top: 10rem;
+
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+
+  #mailboxlist {
+    @include hover-cursor;
+    background: none;
+    border: none;
+
+    .mailbox {
+      @include flex-center;
+      background: transparent;
+      border: transparent 2px solid;
+      border-radius: 0.5rem;
+      padding: 0.2rem;
+
+      margin-left: 0.75rem;
+      margin-right: 0.75rem;
+
+      color: white;
+
+      transition: all 150ms ease-in-out;
+
+      a {
+        text-align: left;
+        width: 80%;
+        background: none;
+        font-size: 0.85rem;
+        text-shadow: none;
+        color: inherit;
+
+        .unreadcount,
+        .mailbox-refresh {
+          position: absolute;
+          @include flex-center;
+          padding: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          text-align: center;
+          box-shadow: none;
+        }
+
+        .unreadcount {
+          right: 0.5em;
+          color: white;
+          border-radius: 0.4em;
+          background: macchiato.$lavender;
+          min-width: 1.5em;
+          height: 1.5em;
+        }
+
+        .mailbox-refresh {
+          @include flex-center;
+          display: none;
+
+          font-size: 0.6rem;
+          width: 2em;
+          height: 2em;
+          right: 3em;
+          overflow: visible;
+          color: macchiato.$sky;
+
+          i {
+            @include flex-center;
+            position: absolute;
+            font-size: 1.5em;
+            transition: all 200ms ease-in-out;
+
+            --deg: 0deg;
+            transform: rotate(var(--deg));
+
+            &:hover, &:active {
+              color: macchiato.$teal;
+            }
+            &:hover {
+              --deg: 20deg;
+            }
+
+            &:active {
+              transition: all 400ms ease-in-out;
+              --deg: 360deg;
+            }
+          }
+        }
+      }
+
+      >i {
+        position: absolute;
+        @include flex-center;
+        font-size: 1.5em;
+        left: 0.7rem;
+      }
+
+      &.trash, &.junk {
+        color: macchiato.$subtext0;
+      }
+
+      &:hover {
+        color: macchiato.$green;
+      }
+
+      &.selected {
+        color: macchiato.$green;
+        border: macchiato.$red 2px solid;
+        background: macchiato.$surface2;
+
+        //filter: drop-shadow(0px 0px 3px macchiato.$maroon);
+
+        .mailbox-refresh {
+          display: flex;
+        }
+      }
+
+      &.mailview-left-divider {
+        margin-top: 1rem;
+        overflow: visible;
+
+        &::before {
+          content: "";
+          position: absolute;
+
+          width: 100%;
+          height: 2px;
+          background: macchiato.$surface1;
+
+          transform: translateY(-1.5rem);
+        }
+      }
+    }
+  }
+}
+
+#mailviewsplitterv {
+  display: none;
+}

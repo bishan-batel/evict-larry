@@ -1,0 +1,135 @@
+@use "sass:color";
+@use "@catppuccin/palette/scss/macchiato";
+@import "/src/ui/common/global";
+
+div#login-form {
+
+	> .box-inner {
+		@include flex-center;
+		flex-direction: column;
+
+		box-shadow: none;
+		background: none;
+		border: none;
+
+		> #logo {
+			//filter: drop-shadow(0px 0px 5px $purple);
+		}
+
+		label {
+			@include flex-center;
+			position: absolute;
+			font-size: 1.5rem;
+			text-align: right;
+			transform: translate(-50%, -50%);
+		}
+
+
+		tr > td > label::after {
+			content: "";
+			position: relative;
+			transform: translateX(1rem);
+			width: 2px;
+			height: 0;
+			background: transparent;
+			border-radius: 1rem;
+		}
+
+		tr:focus-within > td > label {
+			transition: 200ms ease-in-out;
+			color: macchiato.$green;
+
+			&::after {
+				transition: 100ms ease-in-out;
+				height: 2rem;
+				background: macchiato.$lavender;
+			}
+		}
+
+		input {
+			font-size: 1rem;
+			border: transparent 2px solid;
+			border-radius: 10px;
+			color: whitesmoke;
+			background: macchiato.$surface0;
+		}
+
+		input:focus, input:focus-within, input:active {
+			transition: all 200ms ease-in-out;
+			background: macchiato.$surface2;
+
+			color: white;
+
+			//filter: drop-shadow(0px 0px 5px $red);
+			border: macchiato.$red 2px solid;
+			box-shadow: none;
+			-webkit-box-shadow: none;
+		}
+
+		input#rcmloginsubmit {
+			background: macchiato.$red;
+			font-weight: normal;
+			box-shadow: none;
+			-webkit-box-shadow: none;
+			@include hover-cursor;
+			transition: 100ms ease-in-out;
+
+			&:hover, &:active {
+				background: macchiato.$maroon;
+			}
+		}
+	}
+
+	> .box-bottom {
+		background: none;
+	}
+
+	> #bottomline {
+		color: lightgray;
+
+		a, {
+			color: macchiato.$lavender;
+
+			&:visited {
+				color: color.adjust(macchiato.$mauve, $lightness: 10%);
+			}
+		}
+	}
+
+	#message div.error, #message div.warning {
+		@include flex-center;
+		font-size: 1rem;
+		background: none;
+		color: macchiato.$yellow;
+		transition: all 100ms ease-in-out;
+
+		i {
+			font-size: 2rem;
+			transform: translate(-50%, 10%);
+		}
+
+		&:hover {
+			cursor: pointer;
+			color: macchiato.$red;
+		}
+	}
+
+	div.loading {
+		background: none;
+		color: macchiato.$blue;
+
+		@keyframes huh {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		i {
+			animation: huh 1s infinite;
+		}
+	}
+}
+

@@ -1,0 +1,17 @@
+@use "@catppuccin/palette/scss/macchiato";
+@import "src/ui/common/global";
+@import "src/ui/common/header";
+
+:root {
+    font-family: "JetBrains Mono", serif;
+    color: macchiato.$text;
+}
+
+body {
+    background: macchiato.$base;
+    font-family: inherit;
+}
+
+#logo {
+    height: 4rem;
+}

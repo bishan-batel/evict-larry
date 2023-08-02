@@ -1,0 +1,100 @@
+//@import "@catppuccin/palette/scss";
+@use "@catppuccin/palette/scss/macchiato";
+@import "/src/ui/common/global";
+
+#mailview-right {
+	margin-left: 2rem;
+	border-radius: 10px;
+	padding: 10rem;
+	border: macchiato.$surface0 2px solid;
+	background: macchiato.$surface0;
+
+
+	#mailview-top {
+		margin: 2rem;
+		border: none;
+		box-shadow: none;
+		-webkit-box-shadow: none;
+		background: inherit;
+
+		#messagelistcontainer {
+			background: macchiato.$surface0;
+
+			scrollbar-width: thin;
+
+			scrollbar-track-color: macchiato.$mantle;
+
+			&::-webkit-scrollbar {
+				transition: 150ms ease-in-out;
+				background: macchiato.$base;
+				width: 3px;
+
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: macchiato.$mauve;
+			}
+		}
+
+		table {
+			margin: 2rem;
+		}
+
+		table.records-table {
+			background: none;
+			border: macchiato.$base solid 2px;
+			border-radius: 10px;
+
+			@each $cls in (flagged, attachment, listmenu, status, sortcol) {
+				th.#{$cls} {
+					background: macchiato.$surface0;
+
+					i {
+						position: relative;
+						transform: translateY(-50%);
+						font-size: 1rem;
+					}
+				}
+
+				span.#{$cls} {
+					background-image: none;
+				}
+			}
+
+
+			thead tr th {
+				color: macchiato.$text;
+				background: macchiato.$surface0;
+				border: none;
+
+				a {
+					color: inherit;
+					text-decoration: none;
+				}
+			}
+		}
+
+		table#messagelist {
+			tbody {
+				tr.message {
+					color: macchiato.$text;
+
+					td {
+						background: macchiato.$base;
+						border-left: macchiato.$mantle 2px solid;
+
+						a {
+							color: macchiato.$green;
+						}
+					}
+
+				}
+			}
+		}
+
+		#messagelistfooter {
+			display: none;
+		}
+	}
+
+}

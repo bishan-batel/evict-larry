@@ -1,0 +1,11 @@
+@use "@catppuccin/palette/scss/macchiato";
+@import "../common/global";
+
+#topline {
+	background: macchiato.$base;
+	border: transparent;
+}
+
+#topnav {
+	background: macchiato.$base;
+}
